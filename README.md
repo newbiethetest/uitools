@@ -59,9 +59,9 @@ $ electron-packager  ./  --platform=linux --arch=x64 --ignore='^/node_modules/(?
 #### 终端打开
 ![终端打开](screen/shellopen.jpg)
 #### 浏览器打开
-![浏览器打开](screen/firefox.jpg)
+![浏览器打开](screen/firfox.jpg)
 #### 文件移动
-![文件移动](move/main.jpg)
+![文件移动](screen/move.jpg)
 
 
 **注意事项**
