@@ -1,6 +1,7 @@
 /**
  * Created by root on 16-4-7.
  */
+const path=global.require('path')
 const fs = global.require("fs");
 const exec = global.require('child_process').exec;
 class List {
@@ -32,6 +33,7 @@ class List {
         function checkExsitFile(file) {
             try {
                 const stat=fs.statSync(file)
+
                 return  stat.isDirectory()
 
             } catch(err) {
@@ -125,18 +127,18 @@ class List {
                 //{ text: "查找", icon: 'fa fa-search', action: manager::manager.searchData, disabled: true },
                 { text: "终端", icon: 'fa fa-terminal',disabled: !id,  action: () => {
 
-                    const itemfilename=info['filename'];
+                    //const itemfilename=info['filename'];
                     const itemaddress=info['fileaddress'];
-                    const itempath=itemaddress.replace(itemfilename,'');
+                    const itempathdir=path.dirname(itemaddress);
                     //判断文件路劲是否目录;
                     const AddressIsDir = checkExsitFile(itemaddress);//判断文件信息;
-                    const PathIsDir = checkExsitFile(itempath);//判断文件路径信息;
+
                    // const cdPath=false;
                     //判断确实存在,再来判断是否目录;
 
                     //console.log(PathIsDir!==undefined);
-                    if(PathIsDir!==undefined){
-                        const cdPath=AddressIsDir>=PathIsDir?itemaddress:itempath
+                    if(AddressIsDir!==undefined){
+                        const cdPath=AddressIsDir===1?itemaddress:itempathdir
                         if (cdPath){
                             //如果是目录则打开所在的路径;
                             const cmdStr = 'cd ' +cdPath+' &&x-terminal-emulator';
@@ -170,18 +172,19 @@ class List {
                 },
                 { text: "文管", icon: 'fa fa-desktop',disabled: !id,  action: () => {
 
-                    const itemfilename=info['filename'];
+
                     const itemaddress=info['fileaddress'];
-                    const itempath=itemaddress.replace(itemfilename,'');
+                    const itempathdir=path.dirname(itemaddress);
+                    //console.log(itempathdir);
                     //判断文件路劲是否目录;
                     const AddressIsDir = checkExsitFile(itemaddress);//判断文件信息;
-                    const PathIsDir = checkExsitFile(itempath);//判断文件路径信息;
+
                     // const cdPath=false;
                     //判断确实存在,再来判断是否目录;
 
                     //console.log(PathIsDir!==undefined);
-                    if(PathIsDir!==undefined){
-                        const cdPath=AddressIsDir>=PathIsDir?itemaddress:itempath
+                    if(AddressIsDir!==undefined){
+                        const cdPath=AddressIsDir===1?itemaddress:itempathdir
                         if (cdPath){
                             //如果是目录则打开所在的路径;
                             const cmdStr = 'xdg-open ' +cdPath;

@@ -28,7 +28,7 @@ const myFileManger=new FileManager.default();//导出为default;
 
 
 
-console.log(FileManager);
+//console.log(FileManager);
 //加载拖拽方法列表;
 //开始拖拽
 

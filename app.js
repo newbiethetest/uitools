@@ -27,7 +27,7 @@ app.on('ready', function() {//加载完成后，生成的窗口大小;
     //var db = new Datastore({ filename: __dirname + '/db0406.json', autoload: true });
     // and load the index.html of the app.
     mainWindow.loadURL('file://' + __dirname + '/view/index.html');
-   // mainWindow.webContents.openDevTools();打开控制台调试;
+    //mainWindow.webContents.openDevTools()
 
   //  mainWindow.loadURL("http://qq.com");
 
